@@ -1,0 +1,21 @@
+
+{% include "base.html" %}
+{%block content %}
+    
+<br>
+<br>
+
+<div class="company-form">
+
+    <form method="POST">  
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <button type="save">Submit</button>
+    </form>
+</div>
+<br>
+<br>
+
+
+{%endblock content%}

@@ -1,0 +1,75 @@
+
+{% include "base.html" %}
+{%block content %}
+    
+<br>
+<br>
+
+<div class="company-form">
+
+    <form method="POST">  
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <button type="save">Submit</button>
+    </form>
+</div>
+<br>
+<br>
+<table >
+    <tr>
+
+        <th>Slno</th>
+        <th>CompanyName</th>
+        <th>Company Address</th>
+        <th>Status</th>
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td>{{row.id}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.address}}</td>
+        <td>{{ row.status|yesno:"APPROVED,UN-APPROVED"}}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+{%endblock content%}
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 50%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    form{
+        margin:20px;
+        {% comment %} border:1px solid black; {% endcomment %}
+        align:center;
+        text-align:center;
+        display:flex;
+        
+
+    }
+    form >*{
+        margin:3px;
+    }
+    .company-form{
+        height:70px;
+        border:1px black solid;
+        width:600px;
+        padding: 5px;
+    }
+    </style>
+

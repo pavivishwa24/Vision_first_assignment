@@ -1,0 +1,11 @@
+<html> 
+    {% include "base.html" %}
+    <h1>{{title}}</h1>   
+
+<form method="POST">  
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="save">Register</button>
+
+    </form>
+    </html>
